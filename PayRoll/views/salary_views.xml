@@ -1,0 +1,75 @@
+<odoo>
+    <!-- Action for Salary Menu -->
+    <record id="action_hr_payroll_salary" model="ir.actions.act_window">
+        <field name="name">Salaries</field>
+        <field name="res_model">hr.payroll.salary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Salary Menu under Payroll -->
+    <menuitem id="menu_hr_payroll_salary" name="Salaries" parent="menu_hr_payroll_root" action="action_hr_payroll_salary"/>
+    <menuitem id="menu_hr_payroll_earnings" name="Earnings" parent="menu_hr_payroll_salary"/>
+    <menuitem id="menu_hr_payroll_deductions" name="Deductions" parent="menu_hr_payroll_salary"/>
+
+    <!-- Form View -->
+    <record id="view_hr_payroll_salary_form" model="ir.ui.view">
+        <field name="name">hr.payroll.salary.form</field>
+        <field name="model">hr.payroll.salary</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id" class="oe_title"/>
+                        <field name="employee_identification" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Earnings">
+                            <group>
+                                <field name="basic_salary"/>
+                                <field name="hra"/>
+                                <field name="da"/>
+                                <field name="conveyance_allowance"/>
+                                <field name="special_allowance"/>
+                                <field name="bonus"/>
+                                <field name="overtime_pay"/>
+                                <field name="gross_salary" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Deductions">
+                            <group>
+                                <field name="provident_fund"/>
+                                <field name="esi"/>
+                                <field name="tds"/>
+                                <field name="professional_tax"/>
+                                <field name="other_deductions"/>
+                                <field name="deduction_remark"/>
+                                <field name="total_deductions" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Summary">
+                            <group>
+                                <field name="net_salary" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_hr_payroll_salary_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.salary.tree</field>
+        <field name="model">hr.payroll.salary</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id" string="Employee"/>
+                <field name="employee_identification" string="Employee ID"/>
+                <field name="basic_salary" string="Basic Salary"/>
+                <field name="gross_salary" string="Gross Salary"/>
+                <field name="total_deductions" string="Total Deductions"/>
+                <field name="net_salary" string="Net Salary"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

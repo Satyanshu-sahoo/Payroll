@@ -1,0 +1,50 @@
+<odoo>
+    <!-- Define the Action BEFORE the Menu -->
+    <record id="action_hr_payroll_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">hr.payroll.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hr_payroll_attendance_form" model="ir.ui.view">
+        <field name="name">hr.payroll.attendance.form</field>
+        <field name="model">hr.payroll.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Employee Details">
+                        <field name="employee_id" required="1" options="{'no_create': True}"/>
+                        <field name="employee_identification" readonly="1"/>
+                    </group>
+                    <group string="Attendance Details">
+                        <field name="work_days"/>
+                        <field name="leave_taken"/>
+                        <field name="overtime_hours"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_hr_payroll_attendance_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.attendance.tree</field>
+        <field name="model">hr.payroll.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="employee_identification"/>
+                <field name="work_days"/>
+                <field name="leave_taken"/>
+                <field name="overtime_hours"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Menu item referring to the action -->
+    <menuitem id="menu_hr_payroll_attendance"
+              name="Attendance"
+              parent="menu_hr_payroll_root"
+              action="action_hr_payroll_attendance"/>
+</odoo>

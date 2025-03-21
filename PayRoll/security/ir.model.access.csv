@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payroll_employee,Payroll Employee,model_hr_payroll_employee,,1,1,1,1
+access_payroll_salary,Payroll Salary,model_hr_payroll_salary,,1,1,1,1
+
+access_payroll_attendance,Payroll Attendance,model_hr_payroll_attendance,,1,1,1,1
+access_payroll_compliance,Payroll Compliance,model_hr_payroll_compliance,,1,1,1,1

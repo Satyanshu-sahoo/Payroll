@@ -1,0 +1,69 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_hr_payroll_employee_form" model="ir.ui.view">
+        <field name="name">hr.payroll.employee.form</field>
+        <field name="model">hr.payroll.employee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Employee Details">
+                        <field name="name"/>
+                        <field name="employee_id"/>
+                        <field name="department"/>
+                        <field name="designation"/>
+                        <field name="date_of_joining"/>
+                    </group>
+                    
+                    <group string="Termination Details" colspan="2">
+                        <field name="date_of_termination"/>
+                        <field name="termination_reason"/>
+                    </group>
+
+                    <group string="Bank Account Details" colspan="2">
+                        <field name="bank_account"/>
+                        <field name="bank_name"/>
+                        <field name="ifsc_code"/>
+                    </group>
+
+                    <group string="Identification Details" colspan="2">
+                    <!--   <field name="identification_id"/>   ✅ Added this field --> 
+                        <field name="pan"/>
+                        <field name="aadhaar"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_hr_payroll_employee_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.employee.tree</field>
+        <field name="model">hr.payroll.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="department"/>
+                <field name="designation"/>
+                <field name="date_of_joining"/>
+                <field name="date_of_termination"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Employee Menu -->
+    <record id="action_hr_payroll_employee" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">hr.payroll.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_hr_payroll_root" name="Payroll" sequence="10"/>
+
+    <!-- Employee Menu under Payroll -->
+    <menuitem id="menu_hr_payroll_employee"
+              name="Employees"
+              parent="menu_hr_payroll_root"
+              action="action_hr_payroll_employee"/>
+</odoo>

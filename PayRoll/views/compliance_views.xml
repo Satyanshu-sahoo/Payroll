@@ -1,0 +1,60 @@
+<odoo>
+    <!-- ✅ Compliance Form View -->
+    <record id="view_hr_payroll_compliance_form" model="ir.ui.view">
+        <field name="name">hr.payroll.compliance.form</field>
+        <field name="model">hr.payroll.compliance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Employee Details">
+                        <field name="employee_id" required="1" options="{'no_create': True}"/>
+                        <field name="employee_identification" readonly="1"/>
+                    </group>
+
+                    <group string="Compliance Information">
+                        <field name="compliance"/>
+                        <field name="tax_filed"/>
+                        <field name="pf_compliance"/>
+                        <field name="esi_compliance"/>
+                        <field name="other_compliance"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Additional Info">
+                            <field name="description" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ✅ Compliance Tree View -->
+    <record id="view_hr_payroll_compliance_tree" model="ir.ui.view">
+        <field name="name">hr.payroll.compliance.tree</field>
+        <field name="model">hr.payroll.compliance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="employee_identification"/>
+                <field name="compliance"/>
+                <field name="tax_filed"/>
+                <field name="pf_compliance"/>
+                <field name="esi_compliance"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ✅ Define the action BEFORE the menu item -->
+    <record id="action_hr_payroll_compliance" model="ir.actions.act_window">
+        <field name="name">Compliance</field>
+        <field name="res_model">hr.payroll.compliance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ✅ Menu item for Compliance -->
+    <menuitem id="menu_hr_payroll_compliance" 
+              name="Compliance" 
+              parent="menu_hr_payroll_root" 
+              action="action_hr_payroll_compliance"/>
+</odoo>
